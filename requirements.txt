@@ -1,3 +1,6 @@
+setuptools
+wheel
+build
 streamlit
 pandas
 ccxt
