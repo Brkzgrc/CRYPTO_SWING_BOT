@@ -1,0 +1,1 @@
+# Simulated pandas_ta module

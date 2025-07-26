@@ -2,34 +2,23 @@ import streamlit as st
 import pandas as pd
 import ccxt
 from datetime import datetime
-
-import importlib.util
 import sys
 import os
-import sys
-sys.path.append("./pandas_ta")  # manuel modül yolu
 
-spec = importlib.util.spec_from_file_location(
-    "bot_module",
-    os.path.join(os.path.dirname(__file__), "CRYPTO_SWING_BOT.py")
+sys.path.append(os.path.join(os.path.dirname(__file__), "pandas_ta"))
+import pandas_ta as ta
+
+from crypto_swing_bot import (
+    run_analysis,
+    get_binance_usdt_symbols,
+    THRESHOLDS
 )
-bot_module = importlib.util.module_from_spec(spec)
-sys.modules["bot_module"] = bot_module
-spec.loader.exec_module(bot_module)
-
-run_analysis = bot_module.run_analysis
-get_binance_usdt_symbols = bot_module.get_binance_usdt_symbols
-THRESHOLDS = bot_module.THRESHOLDS
 
 st.set_page_config(page_title="📈 Crypto Swing Trade Analyzer", layout="wide")
 st.title("📈 Crypto Swing Trade Analyzer")
 
 symbol_list = get_binance_usdt_symbols()
-selected_symbol = st.sidebar.selectbox(
-    "Coin seç",
-    symbol_list,
-    index=symbol_list.index("AVAX") if "AVAX" in symbol_list else 0
-)
+selected_symbol = st.sidebar.selectbox("Coin seç", symbol_list, index=symbol_list.index("AVAX") if "AVAX" in symbol_list else 0)
 
 timeframes = ["15m", "1h", "4h", "1d"]
 selected_tfs = st.sidebar.multiselect("Zaman Dilimleri", timeframes, default=["1h"])
