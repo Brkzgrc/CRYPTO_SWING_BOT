@@ -6,6 +6,8 @@ from datetime import datetime
 import importlib.util
 import sys
 import os
+import sys
+sys.path.append("./pandas_ta")  # manuel modül yolu
 
 spec = importlib.util.spec_from_file_location(
     "bot_module",
