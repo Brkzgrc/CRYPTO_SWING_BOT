@@ -1,5 +1,4 @@
-streamlit==1.35.0
-pandas==2.2.2
-ccxt==4.1.77
+streamlit
+pandas
+ccxt
 numpy==1.24.4
-git+https://github.com/twopirllc/pandas-ta.git
