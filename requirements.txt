@@ -1,5 +1,5 @@
-streamlit
-pandas
-ccxt
-pandas_ta
+streamlit==1.35.0
+pandas==2.2.2
+ccxt==4.1.77
+pandas_ta==0.3.14b0
 numpy==1.24.4
